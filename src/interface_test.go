@@ -37,6 +37,24 @@ func (T) engineType(t string) string {
 	return t
 }
 
+type Engine interface {
+	model(modelName string) string
+	createCar(fuelCapacity int, model string) interface{}
+}
+type NewCar struct {
+	model        string
+	fuelCapacity int
+}
+type CarName string
+
+func (c CarName) createCar(fuelCapacity int, model string) interface{} {
+	return NewCar{model: model, fuelCapacity: fuelCapacity}
+}
+
+func (c CarName) model(modelName string) string {
+	return modelName
+}
+
 func Test_INTERFACE(t *testing.T) {
 	//use of interface
 	animalInterfaceForCat := animal(&Cat{Name: "C Rakib"})
@@ -51,8 +69,18 @@ func Test_INTERFACE(t *testing.T) {
 	x := Car(T{}).engineType("from method")
 	log.Print(x)
 
-	log.Println(" \n ")
 	//another approach use of interface
 	castToCatFromInterface := animalInterfaceForCat.(*Cat)
 	log.Println(castToCatFromInterface)
+
+	data := Engine(new(CarName))
+	model := data.model("A300")
+	log.Println(model)
+	fuelCapacity := data.createCar(120, model)
+	log.Println(fuelCapacity)
+
+	//convert interface to struct
+	newCar := fuelCapacity.(NewCar)
+	log.Println("car model: ", newCar.model)
+	log.Println("car fuel-capacity: ", newCar.fuelCapacity)
 }
