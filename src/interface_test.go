@@ -37,6 +37,7 @@ func (T) engineType(t string) string {
 	return t
 }
 
+// another approch of interface
 type Engine interface {
 	model(modelName string) string
 	createCar(fuelCapacity int, model string) interface{}
