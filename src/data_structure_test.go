@@ -98,6 +98,8 @@ func multidimensionalArrayExample() {
 }
 
 func arrayExampleWithDataInitialization() {
+	//var arrayDemo [3]interface{}
+	//arrayDemo := [3]interface{}{1, 2, 3}
 	var arrayDemo = [3]interface{}{1, 2, 3}
 	for index := range arrayDemo {
 		log.Println("without casting interface ", arrayDemo[index])
@@ -106,6 +108,9 @@ func arrayExampleWithDataInitialization() {
 }
 
 func arrayExampleWithOutDataInitialization() {
+	//var arrayWithFixedLength [3]string{}
+	//arrayWithFixedLength := [3]string{}
+	//arrayWithFixedLength := [...]string{}
 	var arrayWithFixedLength = [3]string{}
 
 	arrayWithFixedLength[0] = "rakib0"
