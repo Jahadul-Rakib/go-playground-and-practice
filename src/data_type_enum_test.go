@@ -33,4 +33,7 @@ func TestDataTypeEnum(t *testing.T) {
 	log.Println(medium)
 	log.Println(large)
 	log.Println(extraLarge)
+
+	//t.Errorf("error")
+	t.Logf("DONE")
 }
